@@ -1,0 +1,22 @@
+{% extends 'blog/base.html'%}
+{% load static %}
+{% block content %}
+
+  {% for post in post_list %}
+    <article class="media post">
+      <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}" alt="">
+      <div class="media-body">
+          <div class="article-metadata">
+              <a class="mr-2" href="/">{{ post.author }}</a>
+              <small class="text-muted">Published date: {{post.published_date|date:"D M Y"}}</small>
+          </div>
+          <h2> <a class="article-title" href="{% url 'blog_post_detail' post.slug %}">{{post.title}}</a> </h2>
+          <a href="{% url 'blog_post_detail' post.slug %}">Comments: {{post.approve_comments.count}}</a>
+          <p class="article-content">{{post.text|safe}}</p>
+      </div>
+    </article>
+    <br>
+
+  {% endfor %}
+
+{% endblock %}

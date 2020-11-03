@@ -1,0 +1,22 @@
+{% extends 'blog/base.html'%}
+{% load bootstrap4 %}
+
+{% block content %}
+  <div class="jumbotron">
+    <h1>Login, mighty superuser! </h1>
+    <h4>In case you do not have super powers, please check with your admin.</h3>
+
+    {% if form.errors %}
+      <p>The user and password provided did not match.</p>
+    {% endif %}
+
+    <form class="" action="{% url 'login' %}" method="post">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <input class="btn btn-primary" type="submit" value="Login">
+      <input type="hidden" name="next" value="{{next}}">
+    </form>
+
+  </div>
+
+{% endblock content%}
