@@ -47,9 +47,14 @@ class Post(models.Model):
 class Comment(models.Model):
     post = models.ForeignKey(Post, related_name='comments', on_delete = models.CASCADE)
     author = models.CharField(max_length=200)
+    email = models.EmailField(null = True)
     text = models.TextField()
-    date_created = models.DateTimeField(default = timezone.now )
+    date_created = models.DateTimeField(default = timezone.now)
+    date_updated = models.DateTimeField(auto_now=True)
     approved_comment = models.BooleanField(default = False)
+
+    class Meta:
+        ordering = ('date_created',)
 
     def approve(self):
         self.approved_comment = True
@@ -59,7 +64,8 @@ class Comment(models.Model):
         return reverse("blog_post_list")
 
     def __str__(self):
-        return self.text
+        # return self.text
+        return f'Comment by {self.author} on {self.post}'
 
 
 class Profile(models.Model):

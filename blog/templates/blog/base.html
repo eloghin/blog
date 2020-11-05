@@ -15,9 +15,10 @@
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 
     <!-- FONTS -->
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@300&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@300&display=swap" rel="stylesheet">
 
-    <title></title>
+    <title>{% block title %}{% endblock %}</title>
+
   </head>
 
   <body>
@@ -34,8 +35,8 @@
         <div class="navbar-nav">
           <a class="nav-link active" href="{% url 'blog_about' %}">About<span class="sr-only">(current)</span></a>
           <a class="nav-link active" href="{% url 'blog_post_list' %}">Blog</a>
-          <a class="nav-link active" href="https://www.linkedin.com">LinkedIn</a>
-          <a class="nav-link active" href="https://www.github.com">GitHub</a>
+          <a class="nav-link active" href="https://www.linkedin.com/in/elena-loghin-6813855a/">LinkedIn</a>
+          <a class="nav-link active" href="https://github.com/eloghin">GitHub</a>
         </div>
       </div>
 
